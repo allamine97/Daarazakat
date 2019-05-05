@@ -1,0 +1,148 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>Quizz</title>
+<meta name="description" content="Questionnaire à choix multiples en Javascript pour passer des évaluations sur des Quizz" />
+<meta name="robots" content="index,follow" />
+<meta http-equiv="content-language" content="fr" />
+<link href='css/quizz.css' rel='stylesheet' type='text/css' />
+
+<script language="Javascript" src="js/questions.js"></script>
+</head>
+<body>
+
+	<div class="div_conteneur_parent">
+	<div id="infos" class="texte_div"></div>
+		<div class="div_conteneur_page">
+			<a href="https://www.daarazakat.com" target="_self">
+			<img src="images/logo.PNG" style="width:50px;border:none;" align="left" alt="daarazakat" />
+			</a>		
+			<div class="titre_page"><h1>Quizz sur la Zakat </h1></div>
+			
+			<div class="div_int_page">
+			
+			<div style="width:100%;display:block;text-align:center;">
+			</div>
+			
+			<div class="div_saut_ligne" style="height:30px;">
+			</div>						
+			
+			<div style="float:left;width:10%;height:40px;"></div>
+			<div style="float:left;width:80%;height:40px;text-align:center;">
+			<div class="calque_titre">
+			<h1>Cliquez sur la bonne réponse</h1>
+			</div>
+			</div>
+					
+			<div style="float:left;width:10%;height:40px;"></div>
+			
+			<div class="div_saut_ligne">
+			</div>		
+			
+			<div style="width:100%;height:auto;text-align:center;">
+						
+			<div style="width:800px;display:inline-block;" id="conteneur">
+			
+				<div class="centre">
+					<div class="titre_centre" id="question">
+
+					</div>	
+				</div>
+			
+				<div class="colonne" id="liste">
+				<div class="calque_rep" id="rep1" onclick="valider(1)"></div>
+					<div class="calque_rep" id="rep2" onclick="valider(2)"></div>
+					<div class="calque_rep" id="rep3" onclick="valider(3)"></div>
+					<div class="calque_rep" id="rep4" onclick="valider(4)"></div>
+				</div>
+				
+				<div class="centre">
+					<div class="titre_centre" id="apercu" style="text-align:left;font-family:Calibri;">
+					<input type="button" value="debuter" style="margin-left:10px;" onClick="debuter();" />
+					<div id="stats" style="float:right;padding-right:15px;">
+					<div style="float:left;">Votre score :&nbsp;</div>
+					<div id="score" style="float:left;font-weight:bold;">5</div>
+					<div style="float:left;">, Questions restantes :&nbsp;</div>
+					<div id="restant" style="float:left;font-weight:bold;">5</div>
+					</div>
+					</div>	
+				</div>					
+				
+			</div>
+			
+			</div>
+
+			<div class="div_saut_ligne" style="height:50px;">
+			</div>	
+			
+			</div>
+		</div>
+	
+	</div>
+	
+</body>
+<script type="text/javascript" language="javascript">
+
+	var bonne_rep = 0; var nb_questions = 5;
+	var nb_erreurs = 0; var mem_nb_alea="";
+	var jouer=false;
+	
+	function debuter()
+	{
+		jouer = true;
+		bonne_rep = 0; nb_questions = 5;
+		nb_erreurs = 0; mem_nb_alea="";
+		init();
+		suivant();
+	}
+	
+	function init()
+	{
+		document.getElementById('restant').innerText = nb_questions;
+		document.getElementById('score').innerText = 5-nb_erreurs;
+	}
+	function  valider(num_rep) {
+		if(jouer==false)
+			return;
+		if(num_rep != bonne_rep)
+			nb_erreurs++;
+		    nb_questions--;
+		if(nb_questions==0)
+			jouer=false;
+		init();
+		suivant();
+
+	}
+
+	function suivant(){
+		var  indice;
+		var test= true;
+		var nb_alea=0;
+		if(jouer==false)
+			return;
+     while(test==true) {
+       nb_alea=Math.floor(Math.random()*9) + 1 ;
+       if(mem_nb_alea.indexOf("-" + nb_alea + "-")>-1){
+
+		   nb_alea=Math.floor(Math.random()*65) + 1;
+
+	   }else{
+       	 test=false;
+         mem_nb_alea += "-" + nb_alea + "-";
+	   }
+
+	 }
+
+	 var chaine_question= questions(nb_alea);
+       //alert(chaine_question );
+     var tab_question=chaine_question.split('*');
+     document.getElementById('question').innerText=tab_question[0];
+       for(indice=1;indice<=4;indice++){
+       	document.getElementById('rep' +indice).innerText=tab_question[indice];
+	   }
+       bonne_rep=tab_question[5]
+	}
+	
+</script>
+
+</html>

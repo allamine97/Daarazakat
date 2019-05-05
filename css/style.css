@@ -1,0 +1,106 @@
+    a.navbar-brand:hover {
+        color: #0b2e13;
+    }
+    
+    .navbar-green {
+        background-color: #0b2e13;
+        border-radius: 12px;
+    }
+    
+    .navbar-green a {
+        color: white;
+        text-decoration: none;
+    }
+    
+    .icon-bar {
+        background-color: white;
+    }
+    
+    .lien-actif {
+        background-color: green;
+        border-radius: 12px;
+    }
+    
+    li.lien-actif a:hover {
+        color: white;
+        border-radius: 12px;
+    }
+    
+    .footer_part {
+        padding-top: 20px;
+        margin-top: 20px;
+    }
+    
+    @font-face {
+        font-family: 'anwaar';
+        src: url('hester.ttf');
+        src: url('hester.otf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    
+    .carousel-caption h3.f,
+    p.z {
+        font-family: 'anwaar';
+    }
+    
+    .carousel-caption p {
+        font-size: 40px;
+    }
+    
+    .carousel-caption h3 {
+        font-weight: bold;
+    }
+    
+    .info p {
+        display: inline;
+        font-size: 15px;
+    }
+    
+    .info div {
+        margin-bottom: 30px;
+    }
+    
+    .info .social-links {
+        text-decoration: none;
+    }
+    
+    .tt {
+        color: rgba(0, 0, 0, .92);
+        font-weight: 700;
+        font-size: 2.625rem;
+        line-height: 3.25rem;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+    }
+    
+    .divider {
+        background: #ddd;
+        height: 2px;
+        display: block;
+        position: relative;
+        width: 80%;
+        margin: 30px auto;
+    }
+    
+    .divider span {
+        width: 30px;
+        height: 20px;
+        background: #fff;
+        position: absolute;
+        left: 50%;
+        margin-left: -10px;
+        top: -12px;
+        text-align: center;
+        color: #999;
+    }
+    
+    .apprendre li {
+        font-weight: bold;
+        font-size: 18px;
+    }
+    
+    .apprendre p {
+        font-weight: normal;
+        font-size: initial
+    }
